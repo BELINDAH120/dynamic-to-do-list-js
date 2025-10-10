@@ -48,6 +48,41 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Enter') {
             addTask();
         }
+        // Define the function to add a new task
+function addTask() {
+    // Get and trim the text from the input field
+    const taskText = taskInput.value.trim();
+
+    // Check if the input is empty
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
+
+    // Create a new <li> element for the task
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    // Create a remove button for the task
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.className = "remove-btn";
+
+    // When the remove button is clicked, delete the task
+    removeBtn.onclick = function() {
+        taskList.removeChild(li);
+    };
+
+    // Add the remove button to the <li> element
+    li.appendChild(removeBtn);
+
+    // Add the <li> element to the task list
+    taskList.appendChild(li);
+
+    // Clear the input field for the next task
+    taskInput.value = "";
+}
+        
     });
 
 });
